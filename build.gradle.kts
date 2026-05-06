@@ -168,9 +168,7 @@ mavenPublishing {
 
     pom {
         name.set("cc-kotlin")
-        description.set("Kotlin Multiplatform port of rust-lang/cc-rs - A build-time dependency for Cargo build scripts to assist in invoking the native
-C compiler to compile native C code into a static archive to be linked into Rust
-code")
+        description.set("Kotlin Multiplatform port of rust-lang/cc-rs - A build-time dependency for Cargo build scripts to assist in invoking the native C compiler to compile native C code into a static archive to be linked into Rust code")
         inceptionYear.set("2026")
         url.set("https://github.com/KotlinMania/cc-kotlin")
 
