@@ -1,4 +1,4 @@
-// port-lint: source src/parallel/mod.rs
+// port-lint: source parallel/mod.rs
 package io.github.kotlinmania.cc.parallel
 
 // mod async_executor;
