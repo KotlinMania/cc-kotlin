@@ -1,4 +1,4 @@
-// port-lint: source src/utilities.rs
+// port-lint: source utilities.rs
 package io.github.kotlinmania.cc
 
 import kotlin.concurrent.atomics.AtomicInt
@@ -11,8 +11,8 @@ internal class JoinOsStrs(
     override fun toString(): String = buildString {
         val len = slice.size
         for ((index, osStr) in slice.withIndex()) {
-            // TODO: Use OsStr::display once it is stablised,
-            // Path and OsStr has the same `Display` impl
+            // Upstream note: use native OS-string display once it is stabilized;
+            // path and OS-string display use the same formatting.
             append(osStr)
             if (index + 1 < len) {
                 append(delimiter)
@@ -23,8 +23,8 @@ internal class JoinOsStrs(
 
 internal class OptionOsStrDisplay(val value: String?) {
     override fun toString(): String =
-        // TODO: Use OsStr::display once it is stablised
-        // Path and OsStr has the same `Display` impl
+        // Upstream note: use native OS-string display once it is stabilized;
+        // path and OS-string display use the same formatting.
         if (value != null) "Some($value)" else "None"
 }
 
@@ -34,9 +34,11 @@ internal class OnceLock<T : Any> {
 
     private fun isInitialized(): Boolean = state.load() == STATE_DONE
 
+    private fun getUnchecked(): T = slot.load()!!
+
     fun getOrInit(f: () -> T): T {
         if (isInitialized()) {
-            return slot.load()!!
+            return getUnchecked()
         }
         while (true) {
             if (state.compareAndSet(STATE_UNINIT, STATE_RUNNING)) {
@@ -46,7 +48,7 @@ internal class OnceLock<T : Any> {
                 return value
             }
             when (state.load()) {
-                STATE_DONE -> return slot.load()!!
+                STATE_DONE -> return getUnchecked()
                 else -> { /* another initializer is running; spin until done */ }
             }
         }
@@ -65,9 +67,13 @@ internal class OnceLock<T : Any> {
         return if (v != null) "OnceLock($v)" else "OnceLock(<uninit>)"
     }
 
-    private companion object {
-        const val STATE_UNINIT = 0
-        const val STATE_RUNNING = 1
-        const val STATE_DONE = 2
+    companion object {
+        fun <T : Any> new(): OnceLock<T> = OnceLock()
+
+        fun <T : Any> default(): OnceLock<T> = new()
+
+        private const val STATE_UNINIT = 0
+        private const val STATE_RUNNING = 1
+        private const val STATE_DONE = 2
     }
 }
