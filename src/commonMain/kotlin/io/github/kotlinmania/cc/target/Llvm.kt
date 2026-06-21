@@ -58,43 +58,48 @@ internal fun TargetInfo.llvmTarget(rustcTarget: String, version: String?): Strin
 
     // Otherwise, attempt to construct the triple from the target info.
 
-    val arch = when {
-        fullArch.startsWith("riscv32") -> "riscv32"
-        fullArch.startsWith("riscv64") -> "riscv64"
-        fullArch == "aarch64" && vendor == "apple" -> "arm64"
-        fullArch == "armv7" && vendor == "sony" -> "thumbv7a" // FIXME
-        else -> fullArch
-    }
-    val mappedVendor = when {
-        vendor == "kmc" || vendor == "nintendo" -> "unknown"
-        vendor == "unknown" && os == "android" -> "linux"
-        vendor == "uwp" -> "pc"
-        vendor == "espressif" -> ""
-        this.arch == "msp430" -> ""
-        else -> vendor
-    }
-    val mappedOs = when (os) {
-        "macos" -> "macosx"
-        "visionos" -> "xros"
-        "uefi" -> "windows"
-        "solid_asp3", "horizon", "teeos", "nuttx", "espidf" -> "none"
-        "nto" -> "unknown"    // FIXME
-        "trusty" -> "unknown" // FIXME
-        else -> os
-    }
+    val arch =
+        when {
+            fullArch.startsWith("riscv32") -> "riscv32"
+            fullArch.startsWith("riscv64") -> "riscv64"
+            fullArch == "aarch64" && vendor == "apple" -> "arm64"
+            fullArch == "armv7" && vendor == "sony" -> "thumbv7a" // FIXME
+            else -> fullArch
+        }
+    val mappedVendor =
+        when {
+            vendor == "kmc" || vendor == "nintendo" -> "unknown"
+            vendor == "unknown" && os == "android" -> "linux"
+            vendor == "uwp" -> "pc"
+            vendor == "espressif" -> ""
+            this.arch == "msp430" -> ""
+            else -> vendor
+        }
+    val mappedOs =
+        when (os) {
+            "macos" -> "macosx"
+            "visionos" -> "xros"
+            "uefi" -> "windows"
+            "solid_asp3", "horizon", "teeos", "nuttx", "espidf" -> "none"
+            "nto" -> "unknown" // FIXME
+            "trusty" -> "unknown" // FIXME
+            else -> os
+        }
     val mappedVersion = version ?: ""
-    val mappedEnv = when (env) {
-        "newlib", "nto70", "nto71", "nto71_iosock", "p1", "p2", "relibc", "sgx", "uclibc" -> ""
-        "sim" -> "simulator"
-        else -> env
-    }
-    val mappedAbi = when (abi) {
-        "llvm", "softfloat", "uwp", "vec-extabi" -> ""
-        "ilp32" -> "_ilp32"
-        "abi64" -> ""
-        "elfv1", "elfv2" -> ""
-        else -> abi
-    }
+    val mappedEnv =
+        when (env) {
+            "newlib", "nto70", "nto71", "nto71_iosock", "p1", "p2", "relibc", "sgx", "uclibc" -> ""
+            "sim" -> "simulator"
+            else -> env
+        }
+    val mappedAbi =
+        when (abi) {
+            "llvm", "softfloat", "uwp", "vec-extabi" -> ""
+            "ilp32" -> "_ilp32"
+            "abi64" -> ""
+            "elfv1", "elfv2" -> ""
+            else -> abi
+        }
     return when {
         mappedVendor == "" && mappedEnv == "" && mappedAbi == "" ->
             "$arch-$mappedOs$mappedVersion"

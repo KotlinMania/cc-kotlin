@@ -8,20 +8,23 @@ internal class JoinOsStrs(
     val slice: List<String>,
     val delimiter: Char,
 ) {
-    override fun toString(): String = buildString {
-        val len = slice.size
-        for ((index, osStr) in slice.withIndex()) {
-            // Upstream note: use native OS-string display once it is stabilized;
-            // path and OS-string display use the same formatting.
-            append(osStr)
-            if (index + 1 < len) {
-                append(delimiter)
+    override fun toString(): String =
+        buildString {
+            val len = slice.size
+            for ((index, osStr) in slice.withIndex()) {
+                // Upstream note: use native OS-string display once it is stabilized;
+                // path and OS-string display use the same formatting.
+                append(osStr)
+                if (index + 1 < len) {
+                    append(delimiter)
+                }
             }
         }
-    }
 }
 
-internal class OptionOsStrDisplay(val value: String?) {
+internal class OptionOsStrDisplay(
+    val value: String?,
+) {
     override fun toString(): String =
         // Upstream note: use native OS-string display once it is stabilized;
         // path and OS-string display use the same formatting.

@@ -26,14 +26,20 @@ class UtilitiesTest {
         var calls = 0
 
         assertNull(lock.get())
-        assertEquals("configured", lock.getOrInit {
-            calls += 1
-            "configured"
-        })
-        assertEquals("configured", lock.getOrInit {
-            calls += 1
-            "ignored"
-        })
+        assertEquals(
+            "configured",
+            lock.getOrInit {
+                calls += 1
+                "configured"
+            },
+        )
+        assertEquals(
+            "configured",
+            lock.getOrInit {
+                calls += 1
+                "ignored"
+            },
+        )
         assertEquals("configured", lock.get())
         assertEquals(1, calls)
     }
