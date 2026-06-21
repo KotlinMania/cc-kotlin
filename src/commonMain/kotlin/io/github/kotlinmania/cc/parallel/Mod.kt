@@ -20,3 +20,5 @@ package io.github.kotlinmania.cc.parallel
 //
 // Projected callers (Rust):
 // - `libwebrtc-kotlin` imports `cc` (see `/Volumes/stuff/Projects/kotlinmania/cc-kotlin/RUST_CALLERS.md`).
+
+internal const val PARALLEL_MOD = "cc.parallel"
