@@ -5,13 +5,15 @@ Based on AST analysis, here are the concrete next steps.
 ## Summary
 
 - **Files Present:** 2/12 (16.7%)
-- **Function parity:** 6/106 matched (target 13) — 5.7%
+- **Function parity:** 6/108 matched (target 13) — 5.6%
 - **Class/type parity:** 3/23 matched (target 4) — 13.0%
-- **Combined symbol parity:** 9/129 matched (target 17) — 7.0%
-- **Average inline-code cosine:** 0.25 (function body across 1 matched files)
+- **Combined symbol parity:** 9/131 matched (target 17) — 6.9%
+- **Average inline-code cosine:** 0.04 (function body across 1 matched files)
 - **Average documentation cosine:** 0.00 (doc text across 1 matched files)
 - **Cheat-zeroed Files:** 1
 - **Critical Issues:** 2 files with <0.60 function similarity
+- **Needs Review:** 0 files with 0.60-0.84 function similarity
+- **Excellent:** 0 files with >=0.85 function similarity
 
 ## Priority 1: Fix Incomplete High-Dependency Files
 
@@ -30,11 +32,11 @@ Every matched file is listed below with function and type symbol parity.
 ### 1. utilities
 
 - **Target:** `cc.Utilities`
-- **Similarity:** 0.25
+- **Similarity:** 0.04
 - **Dependents:** 0
-- **Priority Score:** 21107.5
-- **Functions:** 6/8 matched (target 13)
-- **Missing functions:** `fmt`, `drop`
+- **Priority Score:** 41309.6
+- **Functions:** 6/10 matched (target 13)
+- **Missing functions:** `fmt`, `fmt`, `fmt`, `drop`
 - **Types:** 3/3 matched (target 4)
 - **Missing types:** _none_
 
