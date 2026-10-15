@@ -12,6 +12,7 @@ kotlinxBenchmark = "0.5.0"
 sha1 = "0.1.2"
 libc = "0.1.5"
 tempfile = "0.1.0"
+shlex = "0.1.1"
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
@@ -32,6 +33,7 @@ kotlinx-benchmark-runtime = { module = "org.jetbrains.kotlinx:kotlinx-benchmark-
 sha1-kotlin = { module = "io.github.kotlinmania:sha1-kotlin", version.ref = "sha1" }
 libc-kotlin = { module = "io.github.kotlinmania:libc-kotlin", version.ref = "libc" }
 tempfile-kotlin = { module = "io.github.kotlinmania:tempfile-kotlin", version.ref = "tempfile" }
+shlex-kotlin = { module = "io.github.kotlinmania:shlex-kotlin", version.ref = "shlex" }
 
 [bundles]
 cc-commonMain = [
@@ -41,4 +43,5 @@ cc-commonMain = [
   "kotlinx-datetime",
   "collections-immutable",
   "sha1-kotlin",
+  "shlex-kotlin",
 ]
