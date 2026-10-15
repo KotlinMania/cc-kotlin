@@ -22,6 +22,8 @@ tmp/
 # AST distance reports and binaries
 port_status_report.md
 high_priority_ports.md
+NEXT_ACTIONS.md
+port_lint_proposed_changes.md
 ast_distance_*.txt
 .cache/
 *.lock
@@ -32,6 +34,12 @@ kotlin-js-store/*
 !kotlin-js-store/wasm/yarn.lock
 tools/ast_distance/ast_distance
 tools/ast_distance/build/
+tools/ast_distance
+tools/
+
+# Native node FFI build artifacts
+native/**/build/
+native/**/node_modules/
 
 # JVM heap dumps
 *.hprof
@@ -49,18 +57,6 @@ __pycache__/
 local.properties
 
 # Swift Package Manager / Xcode workspace state.
-#
-# `swift-test-harness/` is a real SPM package that exercises the Kotlin
-# Swift Export pipeline against the artifacts produced by
-# `embedSwiftExportForXcode`. Its `Package.swift`, `Tests/`, and
-# per-package `.gitignore` (which ignores its own `.build/`) are all
-# tracked. The patterns below cover the Swift/Xcode workspace state
-# that this harness — or any future Swift Package added under the
-# repo — would also produce.
-#
-# Note: the staging directory the Kotlin Swift Export pipeline writes
-# to (`build/swift-test/lib*.a` + `.swiftmodule/` bundles when run with
-# the Xcode-style env vars) is already covered by `build/` above.
 .swiftpm/
 DerivedData/
 *.xcuserstate
