@@ -85,7 +85,7 @@ internal fun TargetInfo.llvmTarget(rustcTarget: String, version: String?): Strin
             "trusty" -> "unknown" // FIXME
             else -> os
         }
-    val mappedVersion = version ?: ""
+    val mappedVersion = version.orEmpty()
     val mappedEnv =
         when (env) {
             "newlib", "nto70", "nto71", "nto71_iosock", "p1", "p2", "relibc", "sgx", "uclibc" -> ""
