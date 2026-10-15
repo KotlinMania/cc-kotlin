@@ -52,6 +52,7 @@ class PlatformHelpersTest {
                 vendor = "apple",
                 os = "macos",
                 env = "",
+                abi = "",
             )
 
         assertEquals("arm64", mapDarwinTargetFromRustToCompilerArchitecture(makeTarget("aarch64", "aarch64")))
@@ -76,6 +77,7 @@ class PlatformHelpersTest {
                 vendor = "unknown",
                 os = "linux",
                 env = "gnu",
+                abi = "",
             )
 
         assertTrue(isArm(makeTarget("aarch64")))
