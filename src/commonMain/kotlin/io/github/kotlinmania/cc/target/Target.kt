@@ -64,4 +64,6 @@ data class TargetInfo(
      * This is the same as the value of the `target_abi` configuration predicate.
      */
     val abi: String,
-)
+) {
+    companion object
+}
