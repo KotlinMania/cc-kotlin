@@ -229,7 +229,7 @@ internal fun waitOnChild(
 /**
  * A source file -> object file pair.
  */
-internal data class Object(
+data class Object(
     val src: String,
     val dst: String,
 ) {
@@ -414,6 +414,11 @@ class Command(
         for ((k, v) in vars) {
             envList.add(k to v)
         }
+        return this
+    }
+
+    fun envRemove(key: String): Command {
+        envList.removeAll { it.first == key }
         return this
     }
 

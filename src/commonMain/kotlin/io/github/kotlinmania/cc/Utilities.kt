@@ -1,4 +1,4 @@
-// port-lint: source utilities.rs
+// port-lint: source src/utilities.rs
 package io.github.kotlinmania.cc
 
 import kotlin.concurrent.atomics.AtomicInt
