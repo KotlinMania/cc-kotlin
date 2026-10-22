@@ -1,4 +1,3 @@
-// port-lint: source src/lib.rs
 package io.github.kotlinmania.cc
 
 import io.github.kotlinmania.cc.parallel.runCommandsInParallel
@@ -10,6 +9,36 @@ import io.github.kotlinmania.cc.target.fromRustcTarget
 import io.github.kotlinmania.shlex.Shlex
 import kotlin.concurrent.atomics.AtomicReference
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
+
+/**
+ * A version of Visual Studio.
+ */
+enum class VsVers {
+    @Deprecated("Visual Studio 12 is no longer supported. cc will never return this value.")
+    Vs12,
+    Vs14,
+    Vs15,
+    Vs16,
+    Vs17,
+}
+
+/**
+ * Windows-specific tool discovery.
+ */
+object Windows {
+    /**
+     * Find the most recent installed version of Visual Studio.
+     */
+    fun findVsVersion(): Result<VsVers> =
+        Result.failure(
+            Error.new(
+                ErrorKind.ToolExecError,
+                "find_vs_version requires MSVC development tools on Windows hosts",
+            ),
+        )
+}
+
+fun findVsVersion(): Result<VsVers> = Windows.findVsVersion()
 
 /**
  * A compiler and flag pair for caching flag support checks.

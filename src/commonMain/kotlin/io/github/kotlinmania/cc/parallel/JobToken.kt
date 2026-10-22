@@ -82,6 +82,14 @@ internal class InheritedJobServer private constructor() {
     }
 }
 
+internal typealias JobServer = InProcessJobServer
+
+internal typealias ActiveJobServer = InheritedActiveJobServer
+
+internal class HelperThread(
+    val jobserver: JobServer? = null,
+)
+
 internal class InheritedActiveJobServer {
     fun acquire(): JobToken = JobToken.new()
 

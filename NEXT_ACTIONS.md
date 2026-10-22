@@ -4,14 +4,14 @@ Based on AST analysis, here are the concrete next steps.
 
 ## Summary
 
-- **Files Present:** 11/12 (91.7%)
-- **Function parity:** 229/248 matched (target 294) — 92.3%
-- **Class/type parity:** 23/33 matched (target 47) — 69.7%
-- **Combined symbol parity:** 252/281 matched (target 341) — 89.7%
-- **Average inline-code cosine:** 0.11 (function body across 9 matched files)
+- **Files Present:** 9/12 (75.0%)
+- **Function parity:** 104/108 matched (target 155) — 96.3%
+- **Class/type parity:** 22/23 matched (target 42) — 95.7%
+- **Combined symbol parity:** 126/131 matched (target 197) — 96.2%
+- **Average inline-code cosine:** 0.12 (function body across 9 matched files)
 - **Average documentation cosine:** 0.20 (doc text across 9 matched files)
-- **Cheat-zeroed Files:** 2
-- **Critical Issues:** 11 files with <0.60 function similarity
+- **Cheat-zeroed Files:** 0
+- **Critical Issues:** 9 files with <0.60 function similarity
 - **Needs Review:** 0 files with 0.60-0.84 function similarity
 - **Excellent:** 0 files with >=0.85 function similarity
 
@@ -40,64 +40,30 @@ Every matched file is listed below with function and type symbol parity.
 - **Types:** 3/3 matched (target 8)
 - **Missing types:** _none_
 
-### 2. lib
-
-- **Target:** `cc.Build [STUB]`
-- **Similarity:** 0.00
-- **Dependents:** 0
-- **Priority Score:** 145010.0
-- **Functions:** 131/140 matched (target 147)
-- **Missing functions:** `find`, `find_vs_version`, `find_tool`, `from`, `fmt`, `new`, `object`, `get_env`, `compute_is_disabled`
-- **Types:** 6/10 matched
-- **Missing types:** `VsVers`, `Env`, `Object`, `BuildEnvGetter`
-- **Tests:** 1/1 matched
-
-### 3. utilities
-
-- **Target:** `cc.Utilities`
-- **Similarity:** 0.04
-- **Dependents:** 0
-- **Priority Score:** 41309.6
-- **Functions:** 6/10 matched (target 13)
-- **Missing functions:** `fmt`, `fmt`, `fmt`, `drop`
-- **Types:** 3/3 matched (target 4)
-- **Missing types:** _none_
-
-### 4. command_helpers
+### 2. command_helpers
 
 - **Target:** `cc.CommandHelpers`
-- **Similarity:** 0.23
+- **Similarity:** 0.25
 - **Dependents:** 0
-- **Priority Score:** 32507.7
-- **Functions:** 18/20 matched (target 49)
-- **Missing functions:** `forward_all`, `drop`
-- **Types:** 4/5 matched (target 10)
-- **Missing types:** `ResetStderr`
+- **Priority Score:** 12507.5
+- **Functions:** 19/20 matched (target 51)
+- **Missing functions:** `forward_all`
+- **Types:** 5/5 matched (target 11)
+- **Missing types:** _none_
 
-### 5. parallel.job_token
-
-- **Target:** `parallel.JobToken`
-- **Similarity:** 0.03
-- **Dependents:** 0
-- **Priority Score:** 32009.7
-- **Functions:** 14/14 matched (target 18)
-- **Missing functions:** _none_
-- **Types:** 3/6 matched (target 8)
-- **Missing types:** `JobServer`, `HelperThread`, `ActiveJobServer`
-
-### 6. flags
+### 3. flags
 
 - **Target:** `cc.Flags`
-- **Similarity:** 0.31
+- **Similarity:** 0.33
 - **Dependents:** 0
-- **Priority Score:** 21606.9
-- **Functions:** 13/15 matched
-- **Missing functions:** `flag_not_empty_generic`, `check`
+- **Priority Score:** 11606.7
+- **Functions:** 14/15 matched (target 17)
+- **Missing functions:** `check`
 - **Types:** 1/1 matched (target 2)
 - **Missing types:** _none_
 - **Tests:** 6/7 matched
 
-### 7. tempfile
+### 4. tempfile
 
 - **Target:** `cc.Tempfile`
 - **Similarity:** 0.08
@@ -108,18 +74,29 @@ Every matched file is listed below with function and type symbol parity.
 - **Types:** 1/1 matched (target 3)
 - **Missing types:** _none_
 
-### 8. parallel.async_executor
+### 5. parallel.job_token
 
-- **Target:** `parallel.AsyncExecutor`
+- **Target:** `parallel.JobToken`
 - **Similarity:** 0.03
 - **Dependents:** 0
-- **Priority Score:** 10409.7
-- **Functions:** 2/2 matched
+- **Priority Score:** 2009.7
+- **Functions:** 14/14 matched (target 18)
 - **Missing functions:** _none_
-- **Types:** 1/2 matched (target 1)
-- **Missing types:** `Output`
+- **Types:** 6/6 matched (target 11)
+- **Missing types:** _none_
 
-### 9. parallel.command_runner
+### 6. utilities
+
+- **Target:** `cc.Utilities`
+- **Similarity:** 0.05
+- **Dependents:** 0
+- **Priority Score:** 1309.5
+- **Functions:** 10/10 matched (target 17)
+- **Missing functions:** _none_
+- **Types:** 3/3 matched (target 4)
+- **Missing types:** _none_
+
+### 7. parallel.command_runner
 
 - **Target:** `parallel.CommandRunner`
 - **Similarity:** 0.09
@@ -130,24 +107,24 @@ Every matched file is listed below with function and type symbol parity.
 - **Types:** 1/1 matched
 - **Missing types:** _none_
 
-### 10. parallel.stderr
+### 8. parallel.async_executor
+
+- **Target:** `parallel.AsyncExecutor`
+- **Similarity:** 0.03
+- **Dependents:** 0
+- **Priority Score:** 409.7
+- **Functions:** 2/2 matched
+- **Missing functions:** _none_
+- **Types:** 2/2 matched
+- **Missing types:** _none_
+
+### 9. parallel.stderr
 
 - **Target:** `parallel.Stderr`
 - **Similarity:** 0.03
 - **Dependents:** 0
 - **Priority Score:** 409.7
 - **Functions:** 4/4 matched
-- **Missing functions:** _none_
-- **Types:** 0/0 matched
-- **Missing types:** _none_
-
-### 11. parallel.mod
-
-- **Target:** `parallel.Mod [STUB]`
-- **Similarity:** 0.00
-- **Dependents:** 0
-- **Priority Score:** 10.0
-- **Functions:** 0/0 matched
 - **Missing functions:** _none_
 - **Types:** 0/0 matched
 - **Missing types:** _none_
@@ -160,4 +137,18 @@ For each file to be considered "complete":
 - All tests ported
 - Documentation ported
 - port-lint header present
+
+## Reexport / Wiring Modules
+
+These files match `reexport_modules` patterns in `.ast_distance_config.json`. They are filtered out of
+normal priority and missing-file ladders because they are wiring
+modules, not direct logic ports. Consult them for call-site routing;
+do not treat them as the next implementation target by default.
+
+### Missing
+
+| Source | Expected target | Deps | Source path | Expected path |
+|--------|-----------------|------|-------------|---------------|
+| `lib` | `Lib` | 0 | `lib.rs` | `Lib.kt` |
+| `parallel.mod` | `parallel.Mod` | 0 | `parallel/mod.rs` | `parallel/Mod.kt` |
 

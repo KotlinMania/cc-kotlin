@@ -1,4 +1,3 @@
-// port-lint: source src/lib.rs
 package io.github.kotlinmania.cc
 
 import io.github.kotlinmania.cc.target.TargetInfo
@@ -108,18 +107,20 @@ enum class AsmFileExt {
 
 private val disabledCache = AtomicInt(0)
 
+fun computeIsDisabled(): Boolean {
+    val envVal = getEnv("CC_FORCE_DISABLE") ?: return false
+    return when (envVal) {
+        "0", "false", "no" -> false
+        else -> true
+    }
+}
+
 fun isDisabled(): Boolean {
     val current = disabledCache.load()
     if (current == 2) return true
     if (current == 1) return false
 
-    val envVal = getEnv("CC_FORCE_DISABLE")
-    val truth =
-        when (envVal) {
-            null -> false
-            "0", "false", "no" -> false
-            else -> true
-        }
+    val truth = computeIsDisabled()
     val encoded = if (truth) 2 else 1
     disabledCache.compareAndSet(0, encoded)
     return truth
