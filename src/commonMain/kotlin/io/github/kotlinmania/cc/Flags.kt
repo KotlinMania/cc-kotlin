@@ -108,11 +108,13 @@ data class RustcCodegenFlags(
 
         val fullFlag = if (prefix.isEmpty()) flagName else "$prefix$flagName"
 
-        fun <T> flagNotEmpty(flagValue: T?): T =
+        fun <T> flagNotEmptyGeneric(flag: String, flagValue: T?): T =
             flagValue ?: throw Error.new(
                 ErrorKind.InvalidFlag,
-                "$fullFlag must have a value",
+                "$flag must have a value",
             )
+
+        fun <T> flagNotEmpty(flagValue: T?): T = flagNotEmptyGeneric(fullFlag, flagValue)
 
         when (fullFlag) {
             "-Ccode-model" -> {
@@ -272,4 +274,9 @@ data class RustcCodegenFlags(
             }
         }
     }
+}
+
+internal fun check(env: String, expected: RustcCodegenFlags): Boolean {
+    val actual = RustcCodegenFlags.parse(env)
+    return actual == expected
 }

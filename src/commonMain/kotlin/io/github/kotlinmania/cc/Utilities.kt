@@ -8,6 +8,8 @@ internal class JoinOsStrs(
     val slice: List<String>,
     val delimiter: Char,
 ) {
+    fun fmt(): String = toString()
+
     override fun toString(): String =
         buildString {
             val len = slice.size
@@ -25,6 +27,8 @@ internal class JoinOsStrs(
 internal class OptionOsStrDisplay(
     val value: String?,
 ) {
+    fun fmt(): String = toString()
+
     override fun toString(): String =
         // Upstream note: use native OS-string display once it is stabilized;
         // path and OS-string display use the same formatting.
@@ -35,9 +39,9 @@ internal class OnceLock<T : Any> {
     private val state = AtomicInt(STATE_UNINIT)
     private val slot = AtomicReference<T?>(null)
 
-    private fun isInitialized(): Boolean = state.load() == STATE_DONE
+    internal fun isInitialized(): Boolean = state.load() == STATE_DONE
 
-    private fun getUnchecked(): T = slot.load()!!
+    internal fun getUnchecked(): T = slot.load()!!
 
     fun getOrInit(f: () -> T): T {
         if (isInitialized()) {
@@ -64,6 +68,14 @@ internal class OnceLock<T : Any> {
         } else {
             null
         }
+
+    fun fmt(): String = toString()
+
+    fun drop() {
+        if (state.load() == STATE_DONE) {
+            slot.store(null)
+        }
+    }
 
     override fun toString(): String {
         val v = get()

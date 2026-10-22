@@ -7,6 +7,8 @@ package io.github.kotlinmania.cc.parallel
 class YieldOnce(
     private var yielded: Boolean = false,
 ) {
+    typealias Output = Unit
+
     /**
      * Poll whether execution has yielded.
      */

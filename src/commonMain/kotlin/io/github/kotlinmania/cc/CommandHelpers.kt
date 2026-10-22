@@ -338,19 +338,36 @@ internal fun runOutput(cmd: Command, cargoOutput: CargoOutput): Result<ByteArray
     }
 }
 
+internal class ResetStderr(
+    val cmd: Command,
+) : AutoCloseable {
+    fun drop() {
+        cmd.stderr(Stdio.Inherit)
+    }
+
+    override fun close() = drop()
+}
+
 internal fun spawn(cmd: Command, cargoOutput: CargoOutput): Result<Child> {
+    val resetStderr = ResetStderr(cmd)
     cargoOutput.printDebug("running: $cmd")
-    return cmd.spawn().fold(
-        onSuccess = { Result.success(it) },
-        onFailure = { e ->
-            Result.failure(
-                Error.new(
-                    ErrorKind.ToolExecError,
-                    "command `$cmd` failed to start: $e",
-                ),
-            )
-        },
-    )
+    return try {
+        cmd.stderr(cargoOutput.stdioForWarnings())
+        cmd.stdout(cargoOutput.stdioForOutput())
+        cmd.spawn().fold(
+            onSuccess = { Result.success(it) },
+            onFailure = { e ->
+                Result.failure(
+                    Error.new(
+                        ErrorKind.ToolExecError,
+                        "command `$cmd` failed to start: $e",
+                    ),
+                )
+            },
+        )
+    } finally {
+        resetStderr.drop()
+    }
 }
 
 internal data class CmdAddOutputFileArgs(
