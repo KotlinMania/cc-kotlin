@@ -16,6 +16,8 @@ libc = "0.1.9"
 tempfile = "0.1.0"
 shlex = "0.1.1"
 
+androidxTestRunner = "1.7.0"
+
 [plugins]
 android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "androidKmp" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
@@ -39,6 +41,8 @@ sha1-kotlin = { module = "io.github.kotlinmania:sha1-kotlin", version.ref = "sha
 libc-kotlin = { module = "io.github.kotlinmania:libc-kotlin", version.ref = "libc" }
 tempfile-kotlin = { module = "io.github.kotlinmania:tempfile-kotlin", version.ref = "tempfile" }
 shlex-kotlin = { module = "io.github.kotlinmania:shlex-kotlin", version.ref = "shlex" }
+
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidxTestRunner" }
 
 [bundles]
 cc-commonMain = [
