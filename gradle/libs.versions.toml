@@ -10,6 +10,7 @@ ktlint = "14.2.0"
 ktlintEngine = "1.8.0"
 kotlinxBenchmark = "0.5.0"
 serde = "0.1.10"
+serdeJson = "0.2.0"
 sha1 = "0.1.2"
 libc = "0.1.9"
 tempfile = "0.1.0"
@@ -33,7 +34,7 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 collections-immutable = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "collectionsImmutable" }
 kotlinx-benchmark-runtime = { module = "org.jetbrains.kotlinx:kotlinx-benchmark-runtime", version.ref = "kotlinxBenchmark" }
 serde-kotlin = { module = "io.github.kotlinmania:serde-kotlin", version.ref = "serde" }
-serde-json-kotlin = { module = "io.github.kotlinmania:serde-json-kotlin", version.ref = "serde" }
+serde-json-kotlin = { module = "io.github.kotlinmania:serde-json-kotlin", version.ref = "serdeJson" }
 sha1-kotlin = { module = "io.github.kotlinmania:sha1-kotlin", version.ref = "sha1" }
 libc-kotlin = { module = "io.github.kotlinmania:libc-kotlin", version.ref = "libc" }
 tempfile-kotlin = { module = "io.github.kotlinmania:tempfile-kotlin", version.ref = "tempfile" }
