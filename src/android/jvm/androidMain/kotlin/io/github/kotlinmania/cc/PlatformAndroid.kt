@@ -7,3 +7,5 @@ internal actual fun isWindows(): Boolean = false
 internal actual fun exeExtension(): String = ""
 
 internal actual fun fileExists(path: String): Boolean = File(path).exists()
+
+internal actual fun tempDir(): String = System.getProperty("java.io.tmpdir").orEmpty().ifEmpty { "." }

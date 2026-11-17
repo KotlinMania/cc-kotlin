@@ -108,10 +108,10 @@ data class RustcCodegenFlags(
 
         val fullFlag = if (prefix.isEmpty()) flagName else "$prefix$flagName"
 
-        fun <T> flagNotEmptyGeneric(flag: String, flagValue: T?): T =
+        fun <T> flagNotEmptyGeneric(name: String, flagValue: T?): T =
             flagValue ?: throw Error.new(
                 ErrorKind.InvalidFlag,
-                "$flag must have a value",
+                "$name must have a value",
             )
 
         fun <T> flagNotEmpty(flagValue: T?): T = flagNotEmptyGeneric(fullFlag, flagValue)

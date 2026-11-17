@@ -9,3 +9,5 @@ internal actual fun isWindows(): Boolean = true
 internal actual fun exeExtension(): String = ".exe"
 
 internal actual fun fileExists(path: String): Boolean = access(path, 0) == 0
+
+internal actual fun tempDir(): String = getEnv("TMPDIR") ?: getEnv("TEMP") ?: getEnv("TMP") ?: "."

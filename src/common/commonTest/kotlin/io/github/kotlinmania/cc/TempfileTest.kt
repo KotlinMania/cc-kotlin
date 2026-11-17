@@ -22,7 +22,7 @@ class TempfileTest {
 
     @Test
     fun namedTempfileCreatesAndCleansUp() {
-        val base = "."
+        val base = tempDir()
         val tmpRes = NamedTempfile.new(base, ".test.c")
         assertTrue(tmpRes.isSuccess)
         val tmp = tmpRes.getOrThrow()

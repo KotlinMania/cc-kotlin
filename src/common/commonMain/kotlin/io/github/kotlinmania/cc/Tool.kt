@@ -421,7 +421,7 @@ class Tool internal constructor(
                 output: CargoOutput,
                 targetOutDir: String?,
             ): Result<ToolFamily> {
-                val dir = targetOutDir ?: getEnv("TMPDIR") ?: getEnv("TEMP") ?: getEnv("TMP") ?: "."
+                val dir = targetOutDir ?: getEnv("TMPDIR") ?: getEnv("TEMP") ?: getEnv("TMP") ?: tempDir()
                 val tmp =
                     NamedTempfile.new(dir, "detect_compiler_family.c").getOrElse { err ->
                         return Result.failure(
