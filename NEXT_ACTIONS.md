@@ -43,9 +43,9 @@ Every matched file is listed below with function and type symbol parity.
 ### 2. command_helpers
 
 - **Target:** `cc.CommandHelpers`
-- **Similarity:** 0.25
+- **Similarity:** 0.24
 - **Dependents:** 0
-- **Priority Score:** 12507.5
+- **Priority Score:** 12507.6
 - **Functions:** 19/20 matched (target 51)
 - **Missing functions:** `forward_all`
 - **Types:** 5/5 matched (target 11)

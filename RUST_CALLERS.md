@@ -16,14 +16,18 @@ For every Rust crate this repo owns (under `tmp/`), this file lists every **cros
 
 | package | module | inbound use sites | distinct caller crates | distinct caller repos | codex sites |
 |---|---|---:|---:|---:|---:|
-| `cc` | `cc` | 1 | 1 | 1 | 0 |
+| `cc` | `cc` | 2 | 2 | 2 | 0 |
 
 ## `cc`
 
-### Inbound symbols (1 distinct, 1 total `use` sites)
+### Inbound symbols (2 distinct, 2 total `use` sites)
 
 Sorted by codex demand, then total demand. The first symbols are the priority queue for porting `cc`.
 
 #### `cc` — 1 site(s) (0 codex, 1 other, 1 caller crates)
 
 - `libwebrtc-kotlin/yuv-sys` `build.rs:1` — `use cc`
+
+#### `cc::Build` — 1 site(s) (0 codex, 1 other, 1 caller crates)
+
+- `sentencepiece-kotlin/sentencepiece-sys` `build.rs:2` — `use cc::Build`
